@@ -94,14 +94,14 @@ button {
 
 /* Marker cluster bubbles — override Leaflet.markercluster's green/yellow defaults.
    Selectors match the library's own specificity (.marker-cluster-small div …). */
-.marker-cluster-small,
-.marker-cluster-medium,
-.marker-cluster-large {
-  background: rgba(29, 40, 58, 0.35);
+.marker-cluster.marker-cluster-small,
+.marker-cluster.marker-cluster-medium,
+.marker-cluster.marker-cluster-large {
+  background: rgba(29, 40, 58, 0.3);
 }
-.marker-cluster-small div,
-.marker-cluster-medium div,
-.marker-cluster-large div {
+.marker-cluster.marker-cluster-small div,
+.marker-cluster.marker-cluster-medium div,
+.marker-cluster.marker-cluster-large div {
   background: var(--cluster);
   color: #fff;
   font: 700 12px/30px system-ui, sans-serif;
