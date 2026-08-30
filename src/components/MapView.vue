@@ -2,7 +2,7 @@
 import { onMounted, onBeforeUnmount, ref, watch } from 'vue';
 import L from 'leaflet';
 import 'leaflet.markercluster';
-import { filteredFacilities, userLocation, SURFACE_META } from '../composables/useFacilities';
+import { allFacilities, filteredFacilities, userLocation, SURFACE_META } from '../composables/useFacilities';
 
 const props = defineProps({ selectedId: { type: String, default: '' } });
 const emit = defineEmits(['select']);
@@ -10,17 +10,30 @@ const emit = defineEmits(['select']);
 const el = ref(null);
 let map, cluster, userMarker, ro;
 const markers = new Map();
+const allById = new Map(allFacilities.map((f) => [f.id, f]));
 
 const SG_CENTER = [1.3521, 103.8198];
 
-function pinIcon(surface) {
+function pinIcon(surface, selected = false) {
+  const s = selected ? 30 : 22;
   return L.divIcon({
     className: '',
-    html: `<div class="pin pin--${surface}"></div>`,
-    iconSize: [18, 18],
-    iconAnchor: [9, 18],
-    popupAnchor: [0, -16],
+    html: `<div class="pin pin--${surface}${selected ? ' pin--selected' : ''}"></div>`,
+    iconSize: [s, s],
+    iconAnchor: [s / 2, s],
+    popupAnchor: [0, -s + 2],
   });
+}
+
+let selectedMarkerId = null;
+function setSelected(id) {
+  if (selectedMarkerId && markers.has(selectedMarkerId)) {
+    const prev = allById.get(selectedMarkerId);
+    if (prev) markers.get(selectedMarkerId).setIcon(pinIcon(prev.surface, false));
+  }
+  selectedMarkerId = id;
+  const cur = allById.get(id);
+  if (cur && markers.has(id)) markers.get(id).setIcon(pinIcon(cur.surface, true));
 }
 
 function popupHtml(f) {
@@ -46,6 +59,7 @@ function render(list) {
     markers.set(f.id, m);
     cluster.addLayer(m);
   }
+  if (selectedMarkerId) setSelected(selectedMarkerId);
 }
 
 function refresh() {
@@ -58,6 +72,7 @@ function focus(id, { open = true } = {}) {
   const m = markers.get(id);
   if (!m || !map) return;
   map.invalidateSize();
+  setSelected(id);
   const ll = m.getLatLng();
   cluster.zoomToShowLayer(m, () => {
     map.setView(ll, Math.max(map.getZoom(), 16), { animate: true });
