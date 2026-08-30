@@ -1,0 +1,84 @@
+:root {
+  --bg: #f4f6f5;
+  --surface: #ffffff;
+  --surface-2: #eef1ef;
+  --border: #d9dedb;
+  --text: #16211c;
+  --text-dim: #5c6a63;
+  --brand: #0b7d3e;
+  --brand-dark: #075c2c;
+  --artificial: #1f8a4c;
+  --grass: #4a7a2c;
+  --unknown: #8a8a8a;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.06);
+  --radius: 12px;
+  --header-h: 56px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #10140f;
+    --surface: #1a1f19;
+    --surface-2: #232a21;
+    --border: #333c31;
+    --text: #e7ede8;
+    --text-dim: #9db0a3;
+    --brand: #3fbf74;
+    --brand-dark: #2f9e5c;
+    --artificial: #3fbf74;
+    --grass: #8fce5f;
+    --unknown: #9aa39c;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.35);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Leaflet marker colours by surface */
+.pin {
+  width: 18px;
+  height: 18px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+.pin--artificial {
+  background: var(--artificial);
+}
+.pin--grass {
+  background: var(--grass);
+}
+.pin--unknown {
+  background: var(--unknown);
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px;
+  font-size: 13px;
+}
+.leaflet-container {
+  font: inherit;
+  background: var(--surface-2);
+}
