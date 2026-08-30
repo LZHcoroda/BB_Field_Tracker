@@ -11,9 +11,10 @@
  *
  * Run:  node scripts/scrape.mjs
  */
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { applyOverrides } from './apply-overrides.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = 'https://www.activesgcircle.gov.sg';
@@ -228,6 +229,10 @@ async function main() {
     await sleep(250);
   }
   process.stdout.write('\n');
+
+  const overrides = JSON.parse(readFileSync(resolve(ROOT, 'scripts/overrides.json'), 'utf8'));
+  const nOverride = applyOverrides(facilities, overrides);
+  if (nOverride) console.log(`  applied ${nOverride} manual override field(s) from scripts/overrides.json`);
 
   facilities.sort((a, b) => a.name.localeCompare(b.name));
 

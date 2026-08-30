@@ -47,8 +47,22 @@ detail page, pulling name, region, address, phone, opening hours, coordinates
 | Neighbourhood free‑to‑play field | Natural grass | medium |
 | Stadium main pitch | Natural grass | low (some are synthetic) |
 
-Every surface label in the UI carries an **"inferred"** badge. Always confirm with
-the venue before you rely on it. Corrections welcome — see `scripts/scrape.mjs`.
+Every inferred surface label in the UI carries an **"inferred"** badge; verified
+corrections show **"confirmed"** instead. Always check with the venue before you rely
+on an inferred value.
+
+**Correcting an entry:** add it to `scripts/overrides.json` keyed by slug, then run
+`npm run overrides` (patches `src/data/facilities.json` in place — no re-scrape needed).
+Overrides are re-applied automatically at the end of every `npm run scrape`.
+
+```json
+{
+  "serangoon-garden-secondary-school-field": {
+    "surface": "artificial",
+    "surfaceBasis": "Confirmed artificial turf (user-reported)"
+  }
+}
+```
 
 ## Deployment
 

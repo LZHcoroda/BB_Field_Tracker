@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "scrape": "node scripts/scrape.mjs",
+    "overrides": "node scripts/apply-overrides.mjs",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {

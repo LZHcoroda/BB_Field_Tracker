@@ -9,8 +9,14 @@ const props = defineProps({
 });
 
 const meta = computed(() => SURFACE_META[props.surface] || SURFACE_META.unknown);
+const confirmed = computed(() => props.confidence === 'confirmed');
+const tagLabel = computed(() => (confirmed.value ? 'confirmed' : 'inferred'));
 const title = computed(() =>
-  [meta.value.label, props.confidence && `· inferred (${props.confidence} confidence)`, props.basis && `\n${props.basis}`]
+  [
+    meta.value.label,
+    props.confidence && (confirmed.value ? '· confirmed' : `· inferred (${props.confidence} confidence)`),
+    props.basis && `\n${props.basis}`,
+  ]
     .filter(Boolean)
     .join(' '),
 );
@@ -20,7 +26,7 @@ const title = computed(() =>
   <span class="sb" :style="{ '--c': meta.color }" :title="title">
     <span class="dot" />
     {{ meta.label }}
-    <span v-if="confidence" class="conf" :data-lvl="confidence">inferred</span>
+    <span v-if="confidence" class="conf" :data-lvl="confidence">{{ tagLabel }}</span>
   </span>
 </template>
 
@@ -53,5 +59,15 @@ const title = computed(() =>
 }
 .conf[data-lvl='low'] {
   color: #b4690e;
+}
+.conf[data-lvl='confirmed'] {
+  background: #e7f4ec;
+  color: #0b7d3e;
+}
+@media (prefers-color-scheme: dark) {
+  .conf[data-lvl='confirmed'] {
+    background: #17331f;
+    color: var(--brand);
+  }
 }
 </style>

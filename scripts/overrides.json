@@ -1,0 +1,7 @@
+{
+  "_comment": "Manual corrections to the inferred data, keyed by facility slug. Applied by scripts/scrape.mjs after scraping and by `npm run overrides`. Any field here wins over the scraped/inferred value; surface overrides are marked surfaceConfidence:'confirmed'.",
+  "serangoon-garden-secondary-school-field": {
+    "surface": "artificial",
+    "surfaceBasis": "Confirmed artificial turf (user-reported)"
+  }
+}
