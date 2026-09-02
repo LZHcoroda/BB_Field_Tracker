@@ -1,7 +1,25 @@
 {
-  "_comment": "Manual corrections to the inferred data, keyed by facility slug. Applied by scripts/scrape.mjs after scraping and by `npm run overrides`. Any field here wins over the scraped/inferred value; surface overrides are marked surfaceConfidence:'confirmed'.",
-  "serangoon-garden-secondary-school-field": {
-    "surface": "artificial",
-    "surfaceBasis": "Confirmed artificial turf (user-reported)"
-  }
+  "_comment": "Manual corrections to the inferred data, keyed by facility slug. Applied by scripts/scrape.mjs after scraping and by `npm run overrides`. Any field here wins over the scraped/inferred value; a surface override sets surfaceConfidence to 'confirmed'. Source: user-provided confirmed list, last updated 2026-09-01.",
+
+  "admiralty-primary-school-field": { "surface": "grass", "surfaceBasis": "Confirmed natural grass (user list, 2026-09-01)" },
+  "anderson-secondary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "ang-mo-kio-secondary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "beatty-secondary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "bedok-green-secondary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "bedok-south-secondary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "bendemeer-primary-school-field": { "surface": "grass", "surfaceBasis": "Confirmed natural grass (user list, 2026-09-01)" },
+  "bendemeer-secondary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "blangah-rise-primary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "bowen-secondary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "bukit-batok-secondary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "bukit-panjang-government-high-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "bukit-panjang-primary-school-field": { "surface": "grass", "surfaceBasis": "Confirmed natural grass (user list, 2026-09-01)" },
+  "bukit-view-secondary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "canberra-primary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "canberra-secondary-school-field": { "surface": "grass", "surfaceBasis": "Confirmed natural grass (user list, 2026-09-01)" },
+  "changkat-changi-secondary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "clementi-town-secondary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "dazhong-primary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "deyi-secondary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user list, 2026-09-01)" },
+  "serangoon-garden-secondary-school-field": { "surface": "artificial", "surfaceBasis": "Confirmed artificial turf (user-reported)" }
 }
